@@ -115,14 +115,6 @@ private extension SecondViewController {
             
             print(data)
             
-//            let chatType = data["type"] as! Int
-//            let chatMessage = data["message"] as! [String:Any]
-//            let chat = SocketChat(type: chatType, message: chatMessage["msg"] as! String)
-//            print("data from server : \(chat)")
-//            self?.chats.append(chat)
-//
-//            self?.chatTableView.reloadData()
-            
         }
     }
     

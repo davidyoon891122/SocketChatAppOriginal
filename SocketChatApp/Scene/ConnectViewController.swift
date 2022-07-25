@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SocketIO
 
 final class ConnectViewController: UIViewController {
     private lazy var textField: UITextField = {
@@ -81,6 +82,8 @@ final class ConnectViewController: UIViewController {
         )
         return button
     }()
+
+    private var socket: SocketIOClient!
     
     
     override func viewDidLoad() {
@@ -89,6 +92,8 @@ final class ConnectViewController: UIViewController {
         self.addSubviews()
         self.setLayoutConstraints()
         self.configureNavigation()
+
+        receiveMessage()
     }
     
     
@@ -136,7 +141,7 @@ final class ConnectViewController: UIViewController {
         SocketIOManager.shared.establishConnection()
 //        let secondViewController = SecondViewController()
 //        self.navigationController?.pushViewController(secondViewController, animated: false)
-//        
+//
     }
     
     @objc func tapDisconnectButton(_ sender: UIButton) {
@@ -149,5 +154,16 @@ final class ConnectViewController: UIViewController {
         }
         
         SocketIOManager.shared.sendMessage(message: message, nickName: "davidyoon")
+    }
+}
+
+private extension ConnectViewController {
+    func receiveMessage() {
+        socket = SocketIOManager.shared.socket
+        socket.on("test") { dataArray, ack in
+            let data = dataArray[0] as? NSDictionary
+            print(data)
+
+        }
     }
 }

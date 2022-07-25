@@ -10,18 +10,14 @@ import SocketIO
 
 class SocketIOManager: NSObject {
     static let shared = SocketIOManager()
-    var manager = SocketManager(socketURL: URL(string: "http://localhost:9000")!, config: [.log(true), .compress])
+    var manager = SocketManager(
+        socketURL: URL(string: "http://localhost:9000")!,
+        config: [.log(false), .compress]
+    )
     var socket: SocketIOClient
     
     override init() {
-        
         self.socket = self.manager.socket(forNamespace: "/test")
-//        
-//        socket.on("test") { dataArray, ack in
-//            dataArray.forEach{
-//                print("dataArray:\($0)")
-//            }
-//        }
         super.init()
     }
     
@@ -34,9 +30,6 @@ class SocketIOManager: NSObject {
     }
     
     func sendMessage(message: String, nickName: String) {
-        socket.emit("event", ["message": "This is a test message"])
-        socket.emit("event1", [["name": "ns"], ["email": "@naver.com"]])
-        socket.emit("event2", ["name":"ns", "email": "@naver.com"])
-        socket.emit("msg", ["nick":nickName, "msg": message])
+        socket.emit("test", ["nick":nickName, "msg": message])
     }
 }
