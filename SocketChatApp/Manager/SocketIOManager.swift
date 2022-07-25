@@ -16,12 +16,12 @@ class SocketIOManager: NSObject {
     override init() {
         
         self.socket = self.manager.socket(forNamespace: "/test")
-        
-        socket.on("test") { dataArray, ack in
-            dataArray.forEach{
-                print("dataArray:\($0)")
-            }
-        }
+//        
+//        socket.on("test") { dataArray, ack in
+//            dataArray.forEach{
+//                print("dataArray:\($0)")
+//            }
+//        }
         super.init()
     }
     

@@ -49,6 +49,8 @@ class ConnectViewController: UIViewController {
         self.view.backgroundColor = .systemBackground
         self.addSubviews()
         self.setLayoutConstraints()
+        self.configureNavigation()
+        
         
     }
     
@@ -63,10 +65,10 @@ class ConnectViewController: UIViewController {
     
     
     func setLayoutConstraints() {
-        self.connectButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50).isActive = true
+        self.connectButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
         self.connectButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16).isActive = true
         
-        self.disconnectButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50).isActive = true
+        self.disconnectButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
         self.disconnectButton.leadingAnchor.constraint(equalTo: self.connectButton.trailingAnchor, constant: 16).isActive = true
         
         self.textField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -77,10 +79,16 @@ class ConnectViewController: UIViewController {
     }
     
     
+    func configureNavigation() {
+        self.title = "ConnectionHome"
+        
+    }
     
     
     @objc func tapConnectButton(_ sender: UIButton) {
         SocketIOManager.shared.establishConnection()
+        let secondViewController = SecondViewController()
+        self.navigationController?.pushViewController(secondViewController, animated: false)
         
     }
     
