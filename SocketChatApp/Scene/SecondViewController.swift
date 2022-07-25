@@ -23,10 +23,23 @@ class SecondViewController: UIViewController {
     
     private lazy var sendMessageButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Send", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.setTitleColor(.blue, for: .highlighted)
-        button.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        button.setTitle(
+            "Send",
+            for: .normal
+        )
+        button.setTitleColor(
+            .black,
+            for: .normal
+        )
+        button.setTitleColor(
+            .blue,
+            for: .highlighted
+        )
+        button.addTarget(
+            self,
+            action: #selector(sendMessage),
+            for: .touchUpInside
+        )
         return button
     }()
     
@@ -44,21 +57,27 @@ class SecondViewController: UIViewController {
     
     
     func addSubviews() {
-        [self.sendMessageButton, self.chatTableView]
+        [
+            sendMessageButton,
+            chatTableView
+        ]
             .forEach{
-                self.view.addSubview($0)
-                $0.translatesAutoresizingMaskIntoConstraints = false
+                view.addSubview($0)
             }
     }
     
     func setLayoutConstraints() {
-        self.sendMessageButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        self.sendMessageButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        
-        self.chatTableView.topAnchor.constraint(equalTo: self.sendMessageButton.bottomAnchor).isActive = true
-        self.chatTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        self.chatTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        self.chatTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        sendMessageButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalToSuperview()
+        }
+
+        chatTableView.snp.makeConstraints {
+            $0.top.equalTo(sendMessageButton.snp.bottom)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
     }
 }
 
@@ -69,11 +88,17 @@ extension SecondViewController: UITableViewDelegate {
 
 
 extension SecondViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         return chats.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = chats[indexPath.row].message
         return cell

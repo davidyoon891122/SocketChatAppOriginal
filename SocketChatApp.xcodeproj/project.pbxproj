@@ -16,6 +16,7 @@
 		AD2A1C3127815A2300BA63DC /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C3027815A2300BA63DC /* ConnectViewController.swift */; };
 		AD2A1C3327818CB400BA63DC /* SocketChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C3227818CB400BA63DC /* SocketChat.swift */; };
 		AD2A1C3527818FA700BA63DC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C3427818FA700BA63DC /* SecondViewController.swift */; };
+		AD689B1C288EBBAA00FD1BDB /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AD689B1B288EBBAA00FD1BDB /* SnapKit-Dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD2A1C2F2781582D00BA63DC /* SocketIO in Frameworks */,
+				AD689B1C288EBBAA00FD1BDB /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +127,7 @@
 			name = SocketChatApp;
 			packageProductDependencies = (
 				AD2A1C2E2781582D00BA63DC /* SocketIO */,
+				AD689B1B288EBBAA00FD1BDB /* SnapKit-Dynamic */,
 			);
 			productName = SocketChatApp;
 			productReference = AD2A1C142781578200BA63DC /* SocketChatApp.app */;
@@ -155,6 +158,7 @@
 			mainGroup = AD2A1C0B2781578200BA63DC;
 			packageReferences = (
 				AD2A1C2D2781582D00BA63DC /* XCRemoteSwiftPackageReference "socket" */,
+				AD689B1A288EBBAA00FD1BDB /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = AD2A1C152781578200BA63DC /* Products */;
 			projectDirPath = "";
@@ -391,6 +395,14 @@
 				minimumVersion = 16.0.1;
 			};
 		};
+		AD689B1A288EBBAA00FD1BDB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -398,6 +410,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AD2A1C2D2781582D00BA63DC /* XCRemoteSwiftPackageReference "socket" */;
 			productName = SocketIO;
+		};
+		AD689B1B288EBBAA00FD1BDB /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD689B1A288EBBAA00FD1BDB /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

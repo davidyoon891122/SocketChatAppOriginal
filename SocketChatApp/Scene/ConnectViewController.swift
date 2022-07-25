@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import SnapKit
 
-class ConnectViewController: UIViewController {
-    
+final class ConnectViewController: UIViewController {
     private lazy var textField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Message to send to server"
@@ -17,29 +17,68 @@ class ConnectViewController: UIViewController {
     
     private lazy var connectButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Connect", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.setTitleColor(.blue, for: .highlighted)
-        button.addTarget(self, action: #selector(tapConnectButton(_:)), for: .touchUpInside)
+        button.setTitle(
+            "Connect",
+            for: .normal
+        )
+        button.setTitleColor(
+            .black,
+            for: .normal
+        )
+        button.setTitleColor(
+            .blue,
+            for: .highlighted
+        )
+        button.addTarget(
+            self,
+            action: #selector(tapConnectButton),
+            for: .touchUpInside
+        )
         return button
     }()
     
     
     private lazy var disconnectButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Discoonect", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.setTitleColor(.blue, for: .highlighted)
-        button.addTarget(self, action: #selector(tapDisconnectButton(_:)), for: .touchUpInside)
+        button.setTitle(
+            "Discoonect",
+            for: .normal
+        )
+        button.setTitleColor(
+            .black,
+            for: .normal
+        )
+        button.setTitleColor(
+            .blue,
+            for: .highlighted
+        )
+        button.addTarget(
+            self,
+            action: #selector(tapDisconnectButton),
+            for: .touchUpInside
+        )
         return button
     }()
     
     private lazy var sendButton: UIButton = {
         let button = UIButton()
-        button.setTitle("SendMessage", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.setTitleColor(.blue, for: .highlighted)
-        button.addTarget(self, action: #selector(tapSendMessageButton(_:)), for: .touchUpInside)
+        button.setTitle(
+            "SendMessage",
+            for: .normal
+        )
+        button.setTitleColor(
+            .black,
+            for: .normal
+        )
+        button.setTitleColor(
+            .blue,
+            for: .highlighted
+        )
+        button.addTarget(
+            self,
+            action: #selector(tapSendMessageButton),
+            for: .touchUpInside
+        )
         return button
     }()
     
@@ -50,46 +89,54 @@ class ConnectViewController: UIViewController {
         self.addSubviews()
         self.setLayoutConstraints()
         self.configureNavigation()
-        
-        
     }
     
     
     func addSubviews() {
-        [textField, connectButton, disconnectButton, sendButton]
+        [
+            textField,
+            connectButton,
+            disconnectButton,
+            sendButton
+        ]
             .forEach{
                 self.view.addSubview($0)
-                $0.translatesAutoresizingMaskIntoConstraints = false
             }
     }
     
     
     func setLayoutConstraints() {
-        self.connectButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
-        self.connectButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16).isActive = true
-        
-        self.disconnectButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
-        self.disconnectButton.leadingAnchor.constraint(equalTo: self.connectButton.trailingAnchor, constant: 16).isActive = true
-        
-        self.textField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        self.textField.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-        
-        self.sendButton.topAnchor.constraint(equalTo: self.textField.bottomAnchor, constant: 16).isActive = true
-        self.sendButton.centerXAnchor.constraint(equalTo: self.textField.centerXAnchor).isActive = true
+        connectButton.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalToSuperview().offset(16.0)
+        }
+
+        disconnectButton.snp.makeConstraints {
+            $0.top.equalTo(connectButton)
+            $0.leading.equalTo(connectButton.snp.trailing).offset(8.0)
+        }
+
+        textField.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+
+        sendButton.snp.makeConstraints {
+            $0.top.equalTo(textField.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+        }
     }
     
     
     func configureNavigation() {
         self.title = "ConnectionHome"
-        
     }
     
     
     @objc func tapConnectButton(_ sender: UIButton) {
         SocketIOManager.shared.establishConnection()
-        let secondViewController = SecondViewController()
-        self.navigationController?.pushViewController(secondViewController, animated: false)
-        
+//        let secondViewController = SecondViewController()
+//        self.navigationController?.pushViewController(secondViewController, animated: false)
+//        
     }
     
     @objc func tapDisconnectButton(_ sender: UIButton) {
