@@ -100,7 +100,7 @@ extension SecondViewController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = chats[indexPath.row].message
+        cell.textLabel?.text = chats[indexPath.row].message.msg
         return cell
     }
     
@@ -114,7 +114,7 @@ private extension SecondViewController {
             let data = dataArray[0] as! NSDictionary
             
             print(data)
-            
+
         }
     }
     

@@ -60,6 +60,17 @@ final class ConnectViewController: UIViewController {
         )
         return button
     }()
+
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(
+            UITableViewCell.self,
+            forCellReuseIdentifier: "cell"
+        )
+        return tableView
+    }()
     
     private lazy var sendButton: UIButton = {
         let button = UIButton()
@@ -84,6 +95,7 @@ final class ConnectViewController: UIViewController {
     }()
 
     private var socket: SocketIOClient!
+    private var myChat: [SocketChat] = []
     
     
     override func viewDidLoad() {
@@ -102,7 +114,8 @@ final class ConnectViewController: UIViewController {
             textField,
             connectButton,
             disconnectButton,
-            sendButton
+            sendButton,
+            tableView
         ]
             .forEach{
                 self.view.addSubview($0)
@@ -121,13 +134,23 @@ final class ConnectViewController: UIViewController {
             $0.leading.equalTo(connectButton.snp.trailing).offset(8.0)
         }
 
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(disconnectButton.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(textField.snp.top)
+        }
+
         textField.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.leading.equalToSuperview().offset(16.0)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16.0)
+            $0.width.equalTo(200.0)
+            $0.height.equalTo(60.0)
         }
 
         sendButton.snp.makeConstraints {
-            $0.top.equalTo(textField.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
+            $0.centerY.equalTo(textField)
+            $0.leading.equalTo(textField.snp.trailing).offset(4.0)
+            $0.trailing.equalToSuperview().offset(-16.0)
         }
     }
     
@@ -139,9 +162,6 @@ final class ConnectViewController: UIViewController {
     
     @objc func tapConnectButton(_ sender: UIButton) {
         SocketIOManager.shared.establishConnection()
-//        let secondViewController = SecondViewController()
-//        self.navigationController?.pushViewController(secondViewController, animated: false)
-//
     }
     
     @objc func tapDisconnectButton(_ sender: UIButton) {
@@ -157,13 +177,55 @@ final class ConnectViewController: UIViewController {
     }
 }
 
+extension ConnectViewController: UITableViewDataSource {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
+        return myChat.count
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = myChat[indexPath.row].message.msg
+        return cell
+    }
+}
+
+extension ConnectViewController: UITableViewDelegate {
+
+}
+
+
 private extension ConnectViewController {
     func receiveMessage() {
         socket = SocketIOManager.shared.socket
-        socket.on("test") { dataArray, ack in
-            let data = dataArray[0] as? NSDictionary
-            print(data)
+        socket.on("test") { [weak self] dataArray, ack in
+            guard let self = self else { return }
+            print(dataArray)
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: dataArray[0], options: .prettyPrinted) else { return }
+            guard let receivedJOSN = try? JSONDecoder().decode(SocketChat.self, from: jsonData) else { return }
+
+            self.myChat.append(receivedJOSN)
+
+            self.updateChat(count: self.myChat.count) {
+                print("get Message")
+            }
+
 
         }
+    }
+
+    func updateChat(count: Int, completion: @escaping () -> Void) {
+        let indexPath = IndexPath(row: count - 1, section: 0)
+
+        tableView.beginUpdates()
+        tableView.insertRows(at: [indexPath], with: .none)
+        tableView.endUpdates()
+
+        tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
     }
 }

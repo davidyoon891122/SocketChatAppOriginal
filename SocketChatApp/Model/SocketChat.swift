@@ -7,7 +7,13 @@
 
 import Foundation
 
-struct SocketChat {
-    var type: Int
-    var message: String
+struct SocketChat: Codable {
+    var type: Int = -1
+    var message: Info = Info()
 }
+
+struct Info: Codable {
+    var msg: String = ""
+    var nick: String = ""
+}
+
