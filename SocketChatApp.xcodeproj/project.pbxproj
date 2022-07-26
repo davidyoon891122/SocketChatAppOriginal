@@ -16,6 +16,7 @@
 		AD2A1C3127815A2300BA63DC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C3027815A2300BA63DC /* ChatViewController.swift */; };
 		AD2A1C3327818CB400BA63DC /* SocketChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C3227818CB400BA63DC /* SocketChat.swift */; };
 		AD689B1C288EBBAA00FD1BDB /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AD689B1B288EBBAA00FD1BDB /* SnapKit-Dynamic */; };
+		AD689B1F2890164100FD1BDB /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD689B1E2890164100FD1BDB /* ChatTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		AD2A1C3027815A2300BA63DC /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AD2A1C3227818CB400BA63DC /* SocketChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketChat.swift; sourceTree = "<group>"; };
 		AD689B1D28900E5300FD1BDB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AD689B1E2890164100FD1BDB /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				AD2A1C3027815A2300BA63DC /* ChatViewController.swift */,
+				AD689B1E2890164100FD1BDB /* ChatTableViewCell.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				AD2A1C182781578200BA63DC /* AppDelegate.swift in Sources */,
 				AD2A1C2C278157E400BA63DC /* SocketIOManager.swift in Sources */,
 				AD2A1C1A2781578200BA63DC /* SceneDelegate.swift in Sources */,
+				AD689B1F2890164100FD1BDB /* ChatTableViewCell.swift in Sources */,
 				AD2A1C3127815A2300BA63DC /* ChatViewController.swift in Sources */,
 				AD2A1C3327818CB400BA63DC /* SocketChat.swift in Sources */,
 			);

@@ -65,11 +65,14 @@ final class ChatViewController: UIViewController {
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
+
         tableView.register(
-            UITableViewCell.self,
-            forCellReuseIdentifier: "cell"
+            ChatTableViewCell.self,
+            forCellReuseIdentifier: ChatTableViewCell.identifier
         )
+
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorStyle = .none
         return tableView
     }()
     
@@ -190,8 +193,17 @@ extension ChatViewController: UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = myChat[indexPath.row].message.msg
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: ChatTableViewCell.identifier,
+            for: indexPath
+        ) as? ChatTableViewCell else { return UITableViewCell() }
+
+        let nickName = myChat[indexPath.row].message.nick
+        let chat = myChat[indexPath.row].message.msg
+        cell.setupCell(
+            nickName: nickName,
+            chat: chat
+        )
         return cell
     }
 }
