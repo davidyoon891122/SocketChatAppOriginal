@@ -30,6 +30,7 @@
 		AD2A1C3027815A2300BA63DC /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		AD2A1C3227818CB400BA63DC /* SocketChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketChat.swift; sourceTree = "<group>"; };
 		AD2A1C3427818FA700BA63DC /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		AD689B1D28900E5300FD1BDB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +49,7 @@
 		AD2A1C0B2781578200BA63DC = {
 			isa = PBXGroup;
 			children = (
+				AD689B1D28900E5300FD1BDB /* README.md */,
 				AD2A1C162781578200BA63DC /* SocketChatApp */,
 				AD2A1C152781578200BA63DC /* Products */,
 			);
