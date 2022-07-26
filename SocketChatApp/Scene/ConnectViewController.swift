@@ -69,6 +69,7 @@ final class ConnectViewController: UIViewController {
             UITableViewCell.self,
             forCellReuseIdentifier: "cell"
         )
+        tableView.rowHeight = UITableView.automaticDimension
         return tableView
     }()
     
@@ -211,21 +212,9 @@ private extension ConnectViewController {
 
             self.myChat.append(receivedJOSN)
 
-            self.updateChat(count: self.myChat.count) {
-                print("get Message")
-            }
-
-
+            let indexPath = IndexPath(row: self.myChat.count - 1, section: 0)
+            self.tableView.reloadData()
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
         }
-    }
-
-    func updateChat(count: Int, completion: @escaping () -> Void) {
-        let indexPath = IndexPath(row: count - 1, section: 0)
-
-        tableView.beginUpdates()
-        tableView.insertRows(at: [indexPath], with: .none)
-        tableView.endUpdates()
-
-        tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
     }
 }
