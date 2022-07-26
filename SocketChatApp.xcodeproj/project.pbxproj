@@ -13,9 +13,8 @@
 		AD2A1C242781578300BA63DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD2A1C222781578300BA63DC /* LaunchScreen.storyboard */; };
 		AD2A1C2C278157E400BA63DC /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C2B278157E400BA63DC /* SocketIOManager.swift */; };
 		AD2A1C2F2781582D00BA63DC /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = AD2A1C2E2781582D00BA63DC /* SocketIO */; };
-		AD2A1C3127815A2300BA63DC /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C3027815A2300BA63DC /* ConnectViewController.swift */; };
+		AD2A1C3127815A2300BA63DC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C3027815A2300BA63DC /* ChatViewController.swift */; };
 		AD2A1C3327818CB400BA63DC /* SocketChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C3227818CB400BA63DC /* SocketChat.swift */; };
-		AD2A1C3527818FA700BA63DC /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2A1C3427818FA700BA63DC /* SecondViewController.swift */; };
 		AD689B1C288EBBAA00FD1BDB /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AD689B1B288EBBAA00FD1BDB /* SnapKit-Dynamic */; };
 /* End PBXBuildFile section */
 
@@ -27,9 +26,8 @@
 		AD2A1C232781578300BA63DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD2A1C252781578300BA63DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD2A1C2B278157E400BA63DC /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
-		AD2A1C3027815A2300BA63DC /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
+		AD2A1C3027815A2300BA63DC /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		AD2A1C3227818CB400BA63DC /* SocketChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketChat.swift; sourceTree = "<group>"; };
-		AD2A1C3427818FA700BA63DC /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		AD689B1D28900E5300FD1BDB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,8 +87,7 @@
 		AD689B17288EAF7300FD1BDB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				AD2A1C3027815A2300BA63DC /* ConnectViewController.swift */,
-				AD2A1C3427818FA700BA63DC /* SecondViewController.swift */,
+				AD2A1C3027815A2300BA63DC /* ChatViewController.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -188,11 +185,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD2A1C3527818FA700BA63DC /* SecondViewController.swift in Sources */,
 				AD2A1C182781578200BA63DC /* AppDelegate.swift in Sources */,
 				AD2A1C2C278157E400BA63DC /* SocketIOManager.swift in Sources */,
 				AD2A1C1A2781578200BA63DC /* SceneDelegate.swift in Sources */,
-				AD2A1C3127815A2300BA63DC /* ConnectViewController.swift in Sources */,
+				AD2A1C3127815A2300BA63DC /* ChatViewController.swift in Sources */,
 				AD2A1C3327818CB400BA63DC /* SocketChat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         self.window?.backgroundColor = .systemBackground
-        let mainViewController = ConnectViewController()
+        let mainViewController = ChatViewController()
         self.window?.rootViewController = UINavigationController(rootViewController: mainViewController)
         self.window?.makeKeyAndVisible()
         

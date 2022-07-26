@@ -1,5 +1,5 @@
 //
-//  ConnectViewController.swift
+//  ChatViewController.swift
 //  SocketChatApp
 //
 //  Created by David Yoon on 2022/01/02.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import SocketIO
 
-final class ConnectViewController: UIViewController {
+final class ChatViewController: UIViewController {
     private lazy var textField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Message to send to server"
@@ -178,7 +178,7 @@ final class ConnectViewController: UIViewController {
     }
 }
 
-extension ConnectViewController: UITableViewDataSource {
+extension ChatViewController: UITableViewDataSource {
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
@@ -196,12 +196,12 @@ extension ConnectViewController: UITableViewDataSource {
     }
 }
 
-extension ConnectViewController: UITableViewDelegate {
+extension ChatViewController: UITableViewDelegate {
 
 }
 
 
-private extension ConnectViewController {
+private extension ChatViewController {
     func receiveMessage() {
         socket = SocketIOManager.shared.socket
         socket.on("test") { [weak self] dataArray, ack in
